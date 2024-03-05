@@ -3,7 +3,7 @@ import { addProduct ,getproducts,getproduct, updateproduct,deleteproduct} from "
 export default {
     addProductToDB : async (req, res) => {
 
-        const { prodName,description, amount, quantity, img, category} = req.body; 
+        const { prodName,description, amount, quantity, img, category} = req.body;  
 
         await addProduct(prodName,description, amount, quantity, img, category);
 

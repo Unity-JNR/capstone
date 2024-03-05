@@ -8,9 +8,9 @@ router.route('/')
      .get(controller.getallusers) 
 
 
-    // router.route('/:id')
-    //       .get(controller.getsingle)
-    //       .patch(controller.updateprod)
+    router.route('/:id')
+          .get(controller.getoneuser) 
+          .patch(controller.edit)
     //       .delete(controller.deleteprod)
 
     export default router  

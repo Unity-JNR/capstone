@@ -40,16 +40,28 @@ const getusers = async() => {
     return users  
 }
 
-const addusers = async(userName,email,password,userRole) => {
-    const [users] = await pool.query(`
-    insert into users (userName,email,password,userRole) values (?,?,?,?)
-    `[userName,email,password,userRole] 
+const addusers = async(userName,userMail,userPass,userRole) => {
+    const [result] = await pool.query(`
+    insert into users (userName,userMail,userPass,userRole) values (?,?,?,?);
+    `,[userName,userMail,userPass,userRole] 
     ) 
-    return users
+    return result 
 }
 
+ const getuser = async(id) => {
+    const [user] = await pool.query("SELECT * FROM users WHERE userID =?", [id]);
+    return user
+}
 
- 
+const updateuser = async(userName,userMail,userPass,userRole,userID) => {
+    const [user]  = await pool.query(`
+        UPDATE users SET userName =?, userMail =?, userPass =?, userRole =? WHERE userID =?
+    `, [userName,userMail,userPass,userRole,userID])
+    return user 
+}
+
+// console.log(addusers("caela","caela@gmail.com","gagag","user"));
 
 
-export  {addProduct,getproducts,getproduct,updateproduct,deleteproduct,getusers,addusers}
+
+export  {addProduct,getproducts,getproduct,updateproduct,deleteproduct,getusers,addusers,getuser,updateuser}
