@@ -11,6 +11,6 @@ router.route('/')
     router.route('/:id')
           .get(controller.getoneuser) 
           .patch(controller.edit)
-    //       .delete(controller.deleteprod)
+          .delete(controller.delete)
 
     export default router  

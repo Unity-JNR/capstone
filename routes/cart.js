@@ -1,17 +1,17 @@
-// import express from 'express';
-// import controller from '../controller/products.js'
-// import con from '../controller/cart.js'
-
-// const router = express.Router()
-
-// router.route('/')
-//     // .post(controller.addProductToDB)
-//     .get(con.getcartss) 
+import express from 'express';
+import controller from '../controller/cart.js'
 
 
-//     // router.route('/:id')
-//     //       .get(controller.getsingle)
-//     //       .patch(controller.updateprod)
-//     //       .delete(controller.deleteprod)
+const router = express.Router()
 
-//     export default router  
+router.route('/')
+    .post(controller.additems)
+    .get(controller.getitems) 
+
+
+    router.route('/:id')
+    //       .get(controller.getsingle)
+          .patch(controller.updateitems)
+          .delete(controller.deleteitems)
+
+    export default router  

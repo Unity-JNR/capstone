@@ -1,4 +1,4 @@
-import {getusers,addusers,getuser,updateproduct, updateuser} from "../models/database.js";
+import {getusers,addusers,getuser,updateproduct, updateuser,deleteuser} from "../models/database.js";
 
 export default {
    getallusers: async (req,res)=> {
@@ -33,5 +33,11 @@ edit : async (req,res)=> {
 
     res.send(await getusers());
 
+},
+delete : async (req,res)=> {
+    await deleteuser(+req.params.id);
+
+    res.send(await getusers());
 }
+
 } 
