@@ -4,8 +4,9 @@ import controller from '../controller/users.js'
 const router = express.Router()
 
 router.route('/')
-     .post(controller.adduser)
+//      .post(controller.adduser)
      .get(controller.getallusers) 
+     
 
 
     router.route('/:id')

@@ -7,8 +7,6 @@ const addProduct = async (prodName,description, amount, quantity, img, category)
     return product
 }
 
-// console.log(addProduct('ford','red',20,1,"www.ford.com","classics")); 
-
    const getproducts = async() => {
     const [products] = await pool.query("SELECT * FROM Products");
     return products
@@ -67,22 +65,57 @@ const deleteuser = async(id)=> {
     return user
 }
 
-// cart
+const checkuser = async(userName)=> {
+    const [[{userPass}]]= await pool.query(`
+    SELECT userPass From users WHERE userName = ?`,[userName])
+    console.log(userPass);
+        return userPass
+    }
+
+    // console.log(await checkuser('caela'));
+// cart 
 
 const getcarts = async()=> {
     const [carts] = await pool.query("SELECT * FROM cart");
     return carts
 }
 
-
-const addcart = async(order_id,quantity)=> {
+const addcart = async (userID, id) => {
     const [cart] = await pool.query(`
-    insert into cart (order_id,quantity) values (?,?)
-    `,[order_id,quantity] 
-    ) 
-    return cart
-}
+        SELECT *
+        FROM cart
+        INNER JOIN Products ON cart.id = Products.id
+        WHERE userID = ? AND Products.id = ?;
+    `, [userID, id]);
 
+    return cart;
+};
+
+const insertcart = async (quantity, id, userID) => {
+    // Check if the userID exists in the users table
+    const [user] = await pool.query('SELECT * FROM users WHERE UserID = ?', [userID]);
+    const [product] = await pool.query('select * from Products where id = ?', [id])
+
+    if (user.length === 0) {
+        // If the user doesn't exist, you might want to handle this case accordingly
+        console.error(`User with ID ${userID} does not exist.`);
+        return null; // or throw an error, return a response, etc.
+    }
+
+    if (product.length === 0) {
+        // If the product doesn't exist, you might want to handle this case accordingly
+        console.error(`Product with ID ${id} does not exist.`);
+        return null; // or throw an error, return a response, etc.
+    }
+
+    // If the user exists, insert the cart record
+    await pool.query('INSERT INTO cart (quantity, id, userID) VALUES (?, ?, ?)', [quantity, id, userID]);
+
+    // Optionally, you can return the result of addcart here
+    return addcart(quantity, id, userID);
+};
+
+ 
 const deletecart = async(order_id)=> {
     const [cart] = await pool.query(`
     delete from cart where order_id =?
@@ -105,4 +138,4 @@ const  getcart = async(order_id) => {
 }
 
 
-export  {addProduct,getproducts,getproduct,updateproduct,deleteproduct,getusers,addusers,getuser,updateuser,deleteuser,getcarts,addcart,deletecart,updatecart,getcart}
+export  {addProduct,getproducts,getproduct,updateproduct,deleteproduct,getusers,addusers,getuser,updateuser,deleteuser,getcarts,addcart,deletecart,updatecart,getcart,insertcart,checkuser}
