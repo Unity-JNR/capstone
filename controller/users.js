@@ -56,7 +56,7 @@ delete : async (req,res)=> {
     res.send(await getusers());
 },
 login : async (req,res)=> {
-    res.send('LOGIN YAY')
+    // res.send('LOGIN YAY')
 }
 
-} 
+}  

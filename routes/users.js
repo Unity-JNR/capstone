@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.route('/')
 //      .post(controller.adduser)
-     .get(controller.getallusers) 
+     .get(controller.getallusers)   
      
 
 
@@ -14,4 +14,4 @@ router.route('/')
           .patch(controller.edit)
           .delete(controller.delete)
 
-    export default router  
+    export default router   

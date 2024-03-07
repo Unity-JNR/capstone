@@ -71,8 +71,6 @@ const checkuser = async(userName)=> {
     console.log(userPass);
         return userPass
     }
-
-    // console.log(await checkuser('caela'));
 // cart 
 
 const getcarts = async()=> {

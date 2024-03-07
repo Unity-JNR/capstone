@@ -13,7 +13,7 @@ const authenticate=(req,res,next)=>{
     if(tokenInHeader===null) res.sendStatus(401)
 
     jwt.verify(tokenInHeader,process.env.SECRET_KEY,(err,user)=>{
-
+ 
 
         if(err) return res.sendStatus(403)
         req.user=user
@@ -32,6 +32,7 @@ const auth=async(req,res,next)=>{
             const {userName}=req.body
 
             const token=jwt.sign({userName:userName},process.env.SECRET_KEY,{expiresIn:'1h'})
+            res.cookie('jwt',token,{httpOnly:true})
 
             res.send({
                 token:token,
@@ -43,6 +44,7 @@ const auth=async(req,res,next)=>{
         }
     })
 }
+
 
 export{
     auth,authenticate

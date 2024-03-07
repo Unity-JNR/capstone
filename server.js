@@ -6,15 +6,21 @@ import cartRoute from './routes/cart.js';
 import signupRoute from './routes/sign_up.js';
 import loginRoute from './routes/login.js';
 import {auth,authenticate} from './middleware/authentication.js';
+import cookieParser from 'cookie-parser'
+import cors from 'cors'
 
 config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+app.use(cors())
 app.use(express.json());
-app.use('/products',authenticate, productRoute); 
+
+app.use(cookieParser());
+// app.use(authenticate)
+app.use('/products', productRoute); 
 app.use('/users', userRoute);
-app.use('/cart', cartRoute);
+app.use('/cart',authenticate, cartRoute);
 app.use('/signup', signupRoute);
 app.use('/login',auth, loginRoute);
 
