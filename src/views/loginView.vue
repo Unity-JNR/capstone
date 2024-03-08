@@ -9,12 +9,12 @@
                <div class="flip-card__inner">
                   <div class="flip-card__front">
                      <div class="title">Log in</div>
-                     <form action="" class="flip-card__form">
+                    
                         <input type="text" placeholder="username" name="username" class="flip-card__input" v-model="userName">
                         <input type="password" placeholder="Password" name="password" class="flip-card__input" v-model="userPass">
                         {{$store.state.loginIn}}
                         <button class="flip-card__btn" @click="login()">Let`s go!</button>
-                     </form>
+                
                   </div>
                   <div class="flip-card__back">
                      <div class="title">Sign up</div>

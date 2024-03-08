@@ -20,6 +20,7 @@ export default createStore({
       let {data} = await axios.post(loginn,user)
       console.log(data);
       $cookies.set('jwt',data.token)
+      console.log($cookies);
       alert(data.msg)
       commit('setLogged',true)
     }
