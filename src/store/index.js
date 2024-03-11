@@ -78,8 +78,15 @@ export default createStore({
      async addproducts({commit},product) {
        let {data} = await axios.post(web,product)
        console.log(data);
+       window.location.reload()
       //  commit('setProducts',data)
-     }
+     },
+     async deleteproducts({commit},id) {
+       let {data} = await axios.delete(web +'/'+ id)
+       console.log(data);
+       window.location.reload()
+      //  commit('setProducts',data)
+     },
   },
   modules: {
   }

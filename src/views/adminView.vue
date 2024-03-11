@@ -22,20 +22,42 @@
                                     <td>{{ item.category }}</td>
                                     <td><img :src="item.img" alt="Product Image" id="image" class=" img-fluid"></td>
                                     <td><button class="btnes" @click="updateproduct(item.prodID)">edit</button></td>
-                                    <td><button class="btnes" @click="deleteproduct(item.prodID)">delete</button></td>
+                                    <td><button class="btnes" @click="deleteproducts(item.id)">delete</button></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
+        <input id="input" type="text" placeholder="productname" v-model="prodName">
+        <input id="input" type="number" placeholder="quantity" v-model="quantity">
+        <input id="input" type="number" placeholder="amount" v-model="amount">
+        <input id="input" type="text" placeholder="decripstion" v-model="description">
+        <input id="input" type="text" placeholder="category" v-model="category">
+        <input id="input" type="text" placeholder="img" v-model="img">
+        <button @click="addproducts()" id="btn">add</button>
+
 </template>
 <script>
 export default {
+    data(){
+        return{
+            prodName:'',
+            quantity:'',
+            amount:'',
+            description:'',
+            category:'',
+            img:''
+        }
+    },
      methods:{
         async getadmin() {
             await this.$store.dispatch('getadmin');
         },
-        async addproduct(){
-            await this.$store.dispatch('addproduct');
+        async addproducts(){
+             this.$store.dispatch('addproducts',this.$data);
+        },
+        deleteproducts(id) {
+ 
+ this.$store.dispatch('deleteproducts', id)
         }
     },
     mounted(){
