@@ -1,8 +1,7 @@
 <template>
-
-    <div class="container">
+      <div class="container">
     <div class="row">
-        <div v-for="item in $store.state.products" :key="item.id" class="col-md-4">
+        <div v-for="item in $store.state.product" :key="item.id" >
             <div class="product-card">
                 <div class="product-tumb">
                     <img :src="item.img" alt="">
@@ -10,11 +9,11 @@
                 <div class="product-details">
                     <span class="product-catagory">{{ item.category }}</span>
                     <h4><a href="">{{ item.prodName }}</a></h4>
-                    <!-- <p>{{ item.description }}</p> -->
+                    <p>{{ item.description }}</p>
                     <div class="product-bottom-details">
                         <div class="product-price">R{{ item.amount }}</div>
                         <div class="product-links">
-                            <router-link @click="getproduct(item.id)" :to="{ name: 'product', params: { id: item.id }} "><i class="fa fa-info"></i>info</router-link>
+                            <!-- <router-link @click="getproduct(item.id)" :to="{ name: 'product', params: { id: item.id }} "><i class="fa fa-info"></i>info</router-link> -->
                             <a href=""><i class="fa fa-shopping-cart"></i>buy</a>
                         </div>
                     </div>
@@ -23,42 +22,27 @@
         </div>
     </div>
 </div>
-
-  
-  </template>
-
-
+</template>
 <script>
-
 export default {
-    data(){
-        return{
+    
+    data() {
+        return {
             
         }
     },
-    methods:{
-        getproduct(id){
-            this.$store.dispatch('getproduct',id);
-        }
+    computed: {
+      getproduct() {
+        this.$store.dispatch("getproduct", this.$route.params.id);
+      },
     },
-    computed:{
-        getproducts(){
-            this.$store.dispatch('getproducts',)
-        }
-    },
-    mounted(){
-        this.getproducts
+    mounted() {
+      this.getproduct; // Corrected the function invocation
     }
-    
-
 }
-
-
 </script>
-
-<style  >
-
-  body{
+<style scoped> 
+      body{
     background-color: #363636 !important;
   }
 a

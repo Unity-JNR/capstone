@@ -1,19 +1,21 @@
 <template>
-  <div class="app">
+  <!-- <div class="app"> -->
     <div class="home">
-      <video autoplay  muted>
-        <source src="https://i.imgur.com/HlHf7Bt.mp4" type="video/mp4">
+      <video autoplay loop muted> 
+        <source src="https://i.imgur.com/xul0o2M.mp4" type="video/mp4">
       </video>
     </div>
     <!-- Your other content goes here -->
-    <h1>WeStealCars</h1>
-  </div>
+    <h1>Vintage Vibes</h1>
+   
+  <!-- </div> -->
   
 </template>
 
 <script>
 export default {
-  name: 'App'
+   
+
 }
 </script>
 
@@ -23,19 +25,16 @@ body {
   /* overflow: hidden; */
 }
 
-.app {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-}
+
 
 .home {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
+  z-index: -1;
 }
 
 video {
@@ -56,6 +55,7 @@ h1 {
   /* text-align: center; */
   font-weight: 500;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  font-family: 'Courier New', Courier, monospace;
 
 
 }

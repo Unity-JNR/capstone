@@ -2,20 +2,35 @@
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
-    <router-link to="/product">product</router-link> |
-    <router-link to="/login">login</router-link> 
+    <router-link to="/products">product</router-link> |
+    <router-link v-if="!$cookies.get('jwt')"  to="/login">login</router-link> 
+    <!-- <router-link v-if="$cookies.get('jwt')" @click="logOut">LogOut</router-link> -->
+    
+
     
   </nav>
+  <button v-if="$cookies.get('jwt')" @click="logOut">LogOut</button>
   <router-view/>
-</template>
 
+</template>
+<script>
+export default {
+   
+   computed: {
+     logOut() {
+     this.$store.dispatch('logOut');
+      //  this.$router.push('/login');
+     } 
+   }
+ }
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  text-align: center !important;
+  color: white !important;
 }
 
 nav {
@@ -24,10 +39,10 @@ nav {
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: white !important;
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: black !important;
 }
 </style>

@@ -1,4 +1,5 @@
 <template>
+    
     <div class="ya">
         <div class="wrapper">
         <div class="card-switch">
@@ -18,11 +19,12 @@
                   </div>
                   <div class="flip-card__back">
                      <div class="title">Sign up</div>
-                     <form action="" class="flip-card__form">
-                        <input type="name" placeholder="Name" class="flip-card__input">
-                        <input type="email" placeholder="Email" name="email" class="flip-card__input">
-                        <input type="password" placeholder="Password" name="password" class="flip-card__input">
-                        <button class="flip-card__btn">Confirm!</button>
+                     <form action="" class="flip-card__form" @submit.prevent>
+                        <input type="name" placeholder="Name" class="flip-card__input" v-model="userName">
+                        <input type="email" placeholder="Email" name="email" class="flip-card__input" v-model="userMail">
+                        <input type="password" placeholder="Password" name="password" class="flip-card__input" v-model="userPass">
+                        <input type="password" placeholder="userRole" name="userRole" class="flip-card__input" v-model="userRole">
+                        <button class="flip-card__btn" @click="register()">Confirm!</button>
                      </form>
                   </div>
                </div>
@@ -36,13 +38,19 @@ export default {
     data() {
         return {
             userName: "",
-            userPass:""
+            userPass:"",
+            userMail:"",
+            userRole:""
         }
     },
     methods: {
         login(){
             this.$store.dispatch('login',this.$data)
-        }
+        },
+        register(){
+            this.$store.dispatch('register',this.$data)
+        },
+      
     }
     
 }

@@ -1,14 +1,18 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
+import router from '@/router'
 axios.defaults.withCredentials = true
 
 const loginn = 'https://capstone-umec.onrender.com/login'
 const web = 'https://capstone-umec.onrender.com/products'
+const register = 'https://capstone-umec.onrender.com/signup'
 
 export default createStore({
   state: {
     loginIn: false,
-    products: []
+    products: [],
+    product: [],
+    user:[]
   },
   getters: {
   },
@@ -18,6 +22,12 @@ export default createStore({
     },
     setProducts(state,value){
       state.products = value
+    },
+    setProduct(state,value){
+      state.product = value
+    },
+    setUser(state,value){
+      state.user = value
     }
   },
   actions: {
@@ -28,12 +38,34 @@ export default createStore({
       console.log($cookies);
       alert(data.msg)
       commit('setLogged',true)
+      await router.push('/')
+      window.location.reload()
+    },
+    async register({commit},user){
+     let {data} = await axios.post(register,user)
+     console.log(data);
+
+
+
     },
     async getproducts({commit}){
       let {data} = await axios.get(web)
       console.log(data);
       commit('setProducts',data)
-    }
+    },
+    async getproduct({commit},id){
+      let {data} = await axios.get(web +'/'+ id)
+      console.log(data);
+      commit('setProduct',data)
+    },
+    async logOut(context){
+      let cookies=$cookies.keys()
+      console.log(cookies)
+      $cookies.remove('jwt')
+      window.location.reload()
+     //  let {data}=await axios.delete(baseUrl+'/logOut')
+     //  alert(data.msg)
+     }
   },
   modules: {
   }
