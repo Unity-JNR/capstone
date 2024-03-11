@@ -3,6 +3,7 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
     <router-link to="/products">product</router-link> |
+    <router-link to="/admin">admin</router-link> |
     <router-link v-if="!$cookies.get('jwt')"  to="/login">login</router-link> 
     <!-- <router-link v-if="$cookies.get('jwt')" @click="logOut">LogOut</router-link> -->
     

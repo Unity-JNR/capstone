@@ -12,7 +12,8 @@ export default createStore({
     loginIn: false,
     products: [],
     product: [],
-    user:[]
+    user:[],
+    admin:[]
   },
   getters: {
   },
@@ -28,6 +29,9 @@ export default createStore({
     },
     setUser(state,value){
       state.user = value
+    },
+    setadmin(state,value){
+      state.admin = value
     }
   },
   actions: {
@@ -65,6 +69,16 @@ export default createStore({
       window.location.reload()
      //  let {data}=await axios.delete(baseUrl+'/logOut')
      //  alert(data.msg)
+     },
+     async getadmin({commit}){
+      let {data} = await axios.get(web)
+      console.log(data);
+      commit('setadmin',data)
+     },
+     async addproducts({commit},product) {
+       let {data} = await axios.post(web,product)
+       console.log(data);
+      //  commit('setProducts',data)
      }
   },
   modules: {
