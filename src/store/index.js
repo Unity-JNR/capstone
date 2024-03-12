@@ -87,6 +87,11 @@ export default createStore({
        window.location.reload()
       //  commit('setProducts',data)
      },
+     async updateproduct({commit},update){
+      let {data} = await axios.patch(web+'/'+ update.id,update)
+      console.log(data);
+      window.location.reload()
+    }
   },
   modules: {
   }

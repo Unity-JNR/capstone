@@ -57,12 +57,12 @@ export default {
 </script>
 <style>
 
-body{
-    background: black;
-}
+body {
+    background-color: #363636 !important;
+  }
 
     .wrapper {
-        margin-top: 40vh;
+        margin-top: 36vh;
   --input-focus: #2d8cf0;
   --font-color: #fefefe;
   --font-color-sub: #7e7e7e;
