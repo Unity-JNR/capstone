@@ -1,5 +1,5 @@
 <template>
-
+<div v-if="$store.state.products.length !== 0">
     <div class="container">
     <div class="row">
         <div v-for="item in $store.state.products" :key="item.id" class="col-md-4">
@@ -23,14 +23,23 @@
         </div>
     </div>
 </div>
+</div>
+
+<div v-else>
+ <spinner/>
+</div>
 
   
   </template>
 
 
 <script>
-
+import spinner from '@/components/spinner.vue';
 export default {
+
+    components: {
+        spinner
+    },
     data(){
         return{
             
