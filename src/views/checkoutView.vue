@@ -126,9 +126,9 @@
 </script>
 
 <style >
-body{
-    background-color: gray !important;
-}
+ body{
+    background-color: #363636 !important;
+  }
 .shopping-cart{
 	padding-bottom: 50px;
 	font-family: 'Montserrat', sans-serif;

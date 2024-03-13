@@ -1,5 +1,33 @@
 <template>
      <div class="table-responsive">
+        <!-- Button trigger modal -->
+<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+Add
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input id="input" type="text" placeholder="productname" v-model="prodName">
+        <input id="input" type="number" placeholder="quantity" v-model="quantity">
+        <input id="input" type="number" placeholder="amount" v-model="amount">
+        <input id="input" type="text" placeholder="decripstion" v-model="description">
+        <input id="input" type="text" placeholder="category" v-model="category">
+        <input id="input" type="text" placeholder="img" v-model="img">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" @click="addproducts()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
                         <table class="table table-bordered table-hover table-dark">
                             <thead>
                                 <tr>
@@ -57,13 +85,6 @@
                             </tbody>
                         </table>
                     </div>
-        <input id="input" type="text" placeholder="productname" v-model="prodName">
-        <input id="input" type="number" placeholder="quantity" v-model="quantity">
-        <input id="input" type="number" placeholder="amount" v-model="amount">
-        <input id="input" type="text" placeholder="decripstion" v-model="description">
-        <input id="input" type="text" placeholder="category" v-model="category">
-        <input id="input" type="text" placeholder="img" v-model="img">
-        <button @click="addproducts()" id="btn">add</button>
 
 </template>
 <script>
