@@ -5,6 +5,7 @@ axios.defaults.withCredentials = true
 
 const loginn = 'https://capstone-umec.onrender.com/login'
 const web = 'https://capstone-umec.onrender.com/products'
+const user_web = 'https://capstone-umec.onrender.com/users'
 const register = 'https://capstone-umec.onrender.com/signup'
 
 export default createStore({
@@ -13,7 +14,8 @@ export default createStore({
     products: [],
     product: [],
     user:[],
-    admin:[]
+    admin:[],
+    users:[]
   },
   getters: {
   },
@@ -32,7 +34,11 @@ export default createStore({
     },
     setadmin(state,value){
       state.admin = value
+    },
+    setUsers(state,value){
+      state.users = value
     }
+    
   },
   actions: {
    async login({commit},user){
@@ -62,7 +68,7 @@ export default createStore({
       console.log(data);
       commit('setProduct',data)
     },
-    async logOut(context){
+    async logOut({commit}){
       let cookies=$cookies.keys()
       console.log(cookies)
       $cookies.remove('jwt')
@@ -89,6 +95,23 @@ export default createStore({
      },
      async updateproduct({commit},update){
       let {data} = await axios.patch(web+'/'+ update.id,update)
+      console.log(data);
+      window.location.reload()
+    },
+    async getUsers({commit}){
+      let {data} = await axios.get(user_web)
+      console.log(data);
+      commit('setUsers',data)
+    },
+    async deleteUser({commit},UserID) {
+    let {data} = await axios.delete(user_web +'/'+ UserID)
+    console.log(data);
+    window.location.reload()
+
+
+    },
+    async updateUser({commit},update){
+      let {data} = await axios.patch(user_web+'/'+ update.id,update)
       console.log(data);
       window.location.reload()
     }
