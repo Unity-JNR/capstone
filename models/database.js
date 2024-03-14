@@ -71,6 +71,13 @@ const checkuser = async(userName)=> {
     console.log(userPass);
         return userPass
     }
+
+    const getusername = async(userName)=> {
+        const [result] = await pool.query(`
+        SELECT * FROM users WHERE userName = ?
+        `,[userName])
+        return result
+    }
 // cart 
 
 const getcarts = async()=> {
@@ -136,4 +143,4 @@ const  getcart = async(order_id) => {
 }
 
 
-export  {addProduct,getproducts,getproduct,updateproduct,deleteproduct,getusers,addusers,getuser,updateuser,deleteuser,getcarts,addcart,deletecart,updatecart,getcart,insertcart,checkuser}
+export  {addProduct,getproducts,getproduct,updateproduct,deleteproduct,getusers,addusers,getuser,updateuser,deleteuser,getcarts,addcart,deletecart,updatecart,getcart,insertcart,checkuser,getusername,getusername}
