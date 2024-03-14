@@ -44,12 +44,21 @@ export default createStore({
    async login({commit},user){
       let {data} = await axios.post(loginn,user)
       console.log(data);
-      $cookies.set('jwt',data.token)
-      console.log($cookies);
-      alert(data.msg)
-      commit('setLogged',true)
-      await router.push('/')
-      window.location.reload()
+      if (data.token !== undefined) {
+        $cookies.set('jwt',data.token)
+        console.log($cookies);
+        alert(data.msg)
+      
+        await router.push('/')
+        window.location.reload()
+      } else 
+      {
+        alert(data.msg)
+        $cookies.remove('jwt')
+      }
+        commit('setLogged')
+      // await router.push('/')
+      // window.location.reload()
     },
     async register({commit},user){
      let {data} = await axios.post(register,user)

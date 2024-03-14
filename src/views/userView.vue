@@ -21,7 +21,7 @@
                     <td><button class="btn btn-dark" @click="deleteUser(item.UserID)">Delete</button></td>  
                     <td>
                                                                    <!-- Button trigger modal -->
-                                                                   <button type="button" class="btn btn-dark" data-bs-toggle="modal" :data-bs-target="'#exampleModal'+item.UserID">
+                                       <button type="button" class="btn btn-dark" data-bs-toggle="modal" :data-bs-target="'#exampleModal'+item.UserID">
                                         edit
                                         </button>
 
