@@ -46,6 +46,10 @@ export default createStore({
       console.log(data);
       if (data.token !== undefined) {
         $cookies.set('jwt',data.token)
+        let [{userRole}]=data.user
+        $cookies.set('userRole',userRole)
+        let [user] =data.user
+        $cookies.set('user',user)
         console.log($cookies);
         alert(data.msg)
       
@@ -55,6 +59,8 @@ export default createStore({
       {
         alert(data.msg)
         $cookies.remove('jwt')
+        $cookies.remove('user')
+        $cookies.remove('userRole')
       }
         commit('setLogged')
       // await router.push('/')
@@ -81,6 +87,8 @@ export default createStore({
       let cookies=$cookies.keys()
       console.log(cookies)
       $cookies.remove('jwt')
+      $cookies.remove('user')
+      $cookies.remove('userRole')
       window.location.reload()
      //  let {data}=await axios.delete(baseUrl+'/logOut')
      //  alert(data.msg)

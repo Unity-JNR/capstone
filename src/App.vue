@@ -4,8 +4,8 @@
     <router-link to="/about">About</router-link> |
     <router-link to="/products">product</router-link> |
     <router-link to="/checkout">checkout</router-link> |
-    <router-link to="/admin">admin</router-link> |
-    <router-link to="/user">user</router-link> |
+    <router-link v-if="$cookies.get('userRole') == 'admin'" to="/admin">admin</router-link> |
+<router-link v-if="$cookies.get('userRole') == 'admin'" to="/user">user</router-link> |
     <router-link v-if="!$cookies.get('jwt')"  to="/login">login</router-link> 
     <!-- <router-link v-if="$cookies.get('jwt')" @click="logOut">LogOut</router-link> -->
     
