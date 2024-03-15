@@ -1,7 +1,6 @@
 <template>
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -26,7 +25,7 @@
         <router-link class="nav-link" v-if="$cookies.get('userRole') == 'admin'" to="/user">user</router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link" to="/about">contact</router-link>
+        <router-link class="nav-link" to="/contact">contact</router-link>
       </li>
       <li class="nav-item">
         <router-link class="nav-link" v-if="!$cookies.get('jwt')"  to="/login">login</router-link> 
