@@ -1,4 +1,5 @@
 <template>
+    <navigation/>
 <div v-if="$store.state.products.length !== 0">
     <div class="container">
     <div class="row">
@@ -35,10 +36,12 @@
 
 <script>
 import spinner from '@/components/spinner.vue';
+import navigation from '@/components/navigation.vue';
 export default {
 
     components: {
-        spinner
+        spinner,
+        navigation
     },
     data(){
         return{

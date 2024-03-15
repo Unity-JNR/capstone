@@ -1,4 +1,5 @@
 <template>
+  <navigation/>
   <!-- <div class="app"> -->
     <div class="home">
       <video autoplay loop muted> 
@@ -13,8 +14,11 @@
 </template>
 
 <script>
+import navigation from '@/components/navigation.vue'
 export default {
-   
+   components: {
+     navigation
+   }
 
 }
 </script>

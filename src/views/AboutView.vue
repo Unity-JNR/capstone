@@ -1,4 +1,5 @@
 <template>
+  <navigation/>
   <div class="about-container">
     <div class="about">
       <!-- Welcome Section -->
@@ -44,7 +45,14 @@
   </div>
 </template>
 
-
+<script>
+import navigation from '@/components/navigation.vue'
+export default {
+  components : {
+navigation 
+  }
+}
+</script>
 
 
 

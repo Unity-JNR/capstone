@@ -1,5 +1,5 @@
 <template>
-    
+    <navigation/>
     <div class="ya">
         <div class="wrapper">
         <div class="card-switch">
@@ -34,7 +34,11 @@
     </div>
 </template>
 <script>
+import navigation from '@/components/navigation.vue'
 export default {
+  components: {
+    navigation
+  },
     data() {
         return {
             userName: "",
