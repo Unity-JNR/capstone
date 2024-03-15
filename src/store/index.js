@@ -108,7 +108,7 @@ export default createStore({
        let {data} = await axios.delete(web +'/'+ id)
        console.log(data);
        window.location.reload()
-      //  commit('setProducts',data)
+      //  commit('setProducts',data) 
      },
      async updateproduct({commit},update){
       let {data} = await axios.patch(web+'/'+ update.id,update)
