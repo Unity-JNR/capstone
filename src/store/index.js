@@ -89,6 +89,7 @@ export default createStore({
       $cookies.remove('jwt')
       $cookies.remove('user')
       $cookies.remove('userRole')
+      await router.push('/')
       window.location.reload()
      //  let {data}=await axios.delete(baseUrl+'/logOut')
      //  alert(data.msg)
