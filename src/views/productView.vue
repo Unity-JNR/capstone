@@ -25,13 +25,13 @@
       ></path>
     </svg>
   </button>
-  <input type="text" name="text" class="input" placeholder="search.." />
+  <input type="text" name="text" class="input" placeholder="search by name or category" v-model="search"  @change="searching()"/>
 </div>
 
 <div v-if="$store.state.products.length !== 0">
     <div class="container">
     <div class="row">
-        <div v-for="item in $store.state.products" :key="item.id" class="col-md-4">
+        <div v-for="item in searching()" :key="item.id" class="col-md-4">
             <div class="product-card">
                 <div class="product-tumb">
                     <img :src="item.img" alt="">
@@ -65,6 +65,7 @@
 <script>
 import spinner from '@/components/spinner.vue';
 import navigation from '@/components/navigation.vue';
+
 export default {
 
     components: {
@@ -73,14 +74,24 @@ export default {
     },
     data(){
         return{
-            
+            search: ''
         }
     },
     methods:{
         getproduct(id){
             this.$store.dispatch('getproduct',id);
-        }
-    },
+        },
+        searching() {
+    
+    let storage = this.$store.state.products;
+    let s = this.search;
+    let v =  storage.filter(prod => {
+      return prod.prodName.toLowerCase().includes(s.toLowerCase()) || prod.category.toLowerCase().includes(s.toLowerCase());
+    });
+    // console.log(v);
+    return v
+    }
+},
     computed:{
         getproducts(){
             this.$store.dispatch('getproducts',)
@@ -90,13 +101,14 @@ export default {
         this.getproducts
     }
     
-
 }
+
+
 
 
 </script>
 
-<style  >
+<style   >
 
   body{
     background-color: #363636 !important;
@@ -212,7 +224,8 @@ a
   align-items: center;
   justify-content: center;
   gap: 15px;
-  position: relative;
+  position: absolute;
+  margin-left: 15px;
  
 }
 
@@ -234,7 +247,7 @@ a
 .input {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-  font-size: 17px;
+  font-size: 16px;
 }
 
 .input::placeholder {
