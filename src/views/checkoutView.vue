@@ -1,5 +1,6 @@
 <template>
-  <navigation/>  
+  <navigation/> 
+      
       
 <div class="container">
   <main>
