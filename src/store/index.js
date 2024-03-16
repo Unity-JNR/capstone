@@ -7,6 +7,7 @@ const loginn = 'https://capstone-umec.onrender.com/login'
 const web = 'https://capstone-umec.onrender.com/products'
 const user_web = 'https://capstone-umec.onrender.com/users'
 const register = 'https://capstone-umec.onrender.com/signup'
+const carts = 'https://capstone-umec.onrender.com/cart'
 
 export default createStore({
   state: {
@@ -15,7 +16,8 @@ export default createStore({
     product: [],
     user:[],
     admin:[],
-    users:[]
+    users:[],
+    single:[]
   },
   getters: {
   },
@@ -37,6 +39,9 @@ export default createStore({
     },
     setUsers(state,value){
       state.users = value
+    },
+    setSingle(state,value){
+      state.single = value
     }
     
   },
@@ -50,11 +55,14 @@ export default createStore({
         $cookies.set('userRole',userRole)
         let [user] =data.user
         $cookies.set('user',user)
+        let [{UserID}] = data.user
+        $cookies.set('userID',UserID)
+
         console.log($cookies);
         alert(data.msg)
       
         await router.push('/')
-        window.location.reload()
+        // window.location.reload()
       } else 
       {
         alert(data.msg)
@@ -132,7 +140,13 @@ export default createStore({
       let {data} = await axios.patch(user_web+'/'+ update.id,update)
       console.log(data);
       window.location.reload()
-    }
+    },
+    async addtocart({commit},payload){
+      let {data} = await axios.post(`${carts}/${payload.id}?user=${payload.userID}`)
+      console.log(data);
+      window.location.reload()
+    },
+
   },
   modules: {
   }

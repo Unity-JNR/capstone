@@ -44,7 +44,10 @@
                         <div class="product-price">R{{ item.amount }}</div>
                         <div class="product-links">
                             <router-link @click="getproduct(item.id)" :to="{ name: 'product', params: { id: item.id }} "><i class="fa fa-info"></i>info</router-link>
-                            <a href=""><i class="fa fa-shopping-cart"></i>buy</a>
+                            <button @click="addtocart(item.id, $cookies.get('userID'))">
+                             <i class="fa fa-shopping-cart"></i>buy
+                            </button>
+
                         </div>
                     </div>
                 </div>
@@ -65,6 +68,7 @@
 <script>
 import spinner from '@/components/spinner.vue';
 import navigation from '@/components/navigation.vue';
+
 
 export default {
 
@@ -90,12 +94,17 @@ export default {
     });
     // console.log(v);
     return v
-    }
+    },
+    addtocart(id){
+        const userID =$cookies.get('userID'); 
+        this.$store.dispatch('addtocart', { id, userID });
+
+        }
 },
     computed:{
         getproducts(){
             this.$store.dispatch('getproducts',)
-        }
+        },
     },
     mounted(){
         this.getproducts
