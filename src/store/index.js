@@ -69,6 +69,7 @@ export default createStore({
         $cookies.remove('jwt')
         $cookies.remove('user')
         $cookies.remove('userRole')
+        $cookies.remove('userID')
       }
         commit('setLogged')
       // await router.push('/')
@@ -97,6 +98,7 @@ export default createStore({
       $cookies.remove('jwt')
       $cookies.remove('user')
       $cookies.remove('userRole')
+      $cookies.remove('userID')
       await router.push('/')
       window.location.reload()
      //  let {data}=await axios.delete(baseUrl+'/logOut')
