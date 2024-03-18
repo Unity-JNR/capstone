@@ -17,7 +17,8 @@ export default createStore({
     user:[],
     admin:[],
     users:[],
-    single:[]
+    single:[],
+    carts:[]
   },
   getters: {
   },
@@ -42,6 +43,9 @@ export default createStore({
     },
     setSingle(state,value){
       state.single = value
+    },
+    setCarts(state,value){
+      state.carts = value
     }
     
   },
@@ -95,6 +99,8 @@ export default createStore({
     async logOut({commit}){
       let cookies=$cookies.keys()
       console.log(cookies)
+      let {data} = await axios.delete('https://capstone-umec.onrender.com/logout');
+      console.log(data);
       $cookies.remove('jwt')
       $cookies.remove('user')
       $cookies.remove('userRole')
@@ -148,6 +154,11 @@ export default createStore({
       console.log(data);
       window.location.reload()
     },
+     async getCart({commit},userID) {
+      let {data} = await axios.get(carts+'/'+userID)
+      console.log(data);
+      commit('setCarts',data)
+     }
 
   },
   modules: {
