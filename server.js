@@ -27,7 +27,7 @@ app.use('/users', userRoute);
 app.use('/cart',authenticate, cartRoute);
 app.use('/signup', signupRoute);
 app.use('/login',auth, loginRoute);
-app.use('/logout');
+app.use('/logout',auth);
 
 app.delete('/logout', (req, res) => {
   res.clearCookie('jwt')
