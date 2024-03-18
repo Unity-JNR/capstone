@@ -36,7 +36,7 @@ const auth=async(req,res,next)=>{
             res.cookie('jwt',token,{httpOnly:true})
 
             res.send({
-                token:token,
+                // token:token,
                 msg:'i have logged in!!! YAY!!!',
                 user:thisUser
             })
