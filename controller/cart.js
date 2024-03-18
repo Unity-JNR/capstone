@@ -2,7 +2,7 @@ import {getcarts,addcart,deletecart,updatecart,getcart,insertcart} from "../mode
 
 export default {
    getitems: async (req,res)=> {
-    res.send(await getcarts())
+    res.send(await getcarts(+req.params.id))
    },
    additems: async (req,res)=>{
     const {  quantity } = req.body;

@@ -6,11 +6,11 @@ const router = express.Router()
 
 router.route('/')
 //     .post(controller.additems)
-    .get(controller.getitems) 
 
 
-    router.route('/:id')
-    //       .get(controller.getsingle)
+router.route('/:id')
+//       .get(controller.getsingle)
+          .get(controller.getitems) 
           .patch(controller.updateitems)
           .delete(controller.deleteitems)
           .post(controller.additems)
