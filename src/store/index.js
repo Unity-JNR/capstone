@@ -18,7 +18,8 @@ export default createStore({
     admin:[],
     users:[],
     single:[],
-    carts:[]
+    carts:[],
+    oneuser:[],
   },
   getters: {
   },
@@ -46,6 +47,9 @@ export default createStore({
     },
     setCarts(state,value){
       state.carts = value
+    },
+    oneuser(state,value){
+      state.oneuser = value
     }
     
   },
@@ -158,7 +162,17 @@ export default createStore({
       let {data} = await axios.get(carts+'/'+userID)
       console.log(data);
       commit('setCarts',data)
-     }
+     },
+     async getoneuser({commit},userID) {
+      let {data} = await axios.get(user_web +'/'+ userID)
+      console.log(data);
+       commit('oneuser',data)
+     },
+     async deletefromcart({commit},order_id){
+      let {data} = await axios.delete(carts + '/' + order_id )
+      console.log(data);
+      window.location.reload()
+     }  
 
   },
   modules: {

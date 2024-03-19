@@ -1,5 +1,6 @@
 <template>
   <navigation/>
+  <userpf class=" float-end "/>
   <!-- <div class="app"> -->
     <div class="home">
       <video autoplay loop muted> 
@@ -20,7 +21,8 @@
 import navigation from '@/components/navigation.vue'
 export default {
    components: {
-     navigation
+     navigation,
+ 
    }
 
 }

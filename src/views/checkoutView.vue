@@ -21,10 +21,10 @@
                            <tr v-for="item in $store.state.carts" :key="item.id">
                                <td>{{ item.prodName }}</td>
                                <td>{{ item.quantity }}</td>
-                               <td>R{{ item.amount }}</td>
+                               <td>R{{ item.Amount }}</td>
                                <td>{{ item.category }}</td>
                                <td><img :src="item.img" alt="Product Image" id="image" class=" img-fluid"></td>
-                               <td><button class="btnes" @click="deleteproducts(item.id)">delete</button></td>
+                               <td><button class="btnes" @click="deletefromcart(item.order_id)">decrease</button></td>
                            </tr>
                        </tbody>
                    </table>
@@ -41,6 +41,11 @@ export default {
   components: {
     navigation
   },
+  methods: {
+    deletefromcart(order_id) {
+      this.$store.dispatch('deletefromcart', order_id)
+    }
+  },
   computed: {
     getCart() {
       this.$store.dispatch('getCart', $cookies.get('userID'))
@@ -52,11 +57,18 @@ export default {
 }
 </script>
 
-<style >
- body{
+<style>
+  body{
     background-color: #363636 !important;
   }
-
-
-
+      #image{
+        width: 100%;
+        object-fit:contain;
+        height: 175px
+    } 
+    td{
+        vertical-align: middle
+        ;
+    }
+ 
 </style>

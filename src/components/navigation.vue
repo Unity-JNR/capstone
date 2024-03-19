@@ -28,6 +28,9 @@
         <router-link class="nav-link" to="/contact">contact</router-link>
       </li>
       <li class="nav-item">
+        <router-link class="nav-link" to="/profile" v-if="$cookies.get('jwt')">profile</router-link>
+      </li>
+      <li class="nav-item">
         <router-link class="nav-link" v-if="!$cookies.get('jwt')"  to="/login">login</router-link> 
       </li>
     </ul>
