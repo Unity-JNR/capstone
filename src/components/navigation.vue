@@ -16,7 +16,7 @@
         <router-link class="nav-link" to="/products">product</router-link> 
       </li>
       <li class="nav-item">
-        <router-link class="nav-link" to="/checkout">checkout</router-link>
+        <router-link class="nav-link" to="/checkout" v-if="$cookies.get('jwt')">checkout</router-link>
       </li>
       <li class="nav-item">
         <router-link class="nav-link" v-if="$cookies.get('userRole') == 'admin'" to="/admin">admin</router-link>
