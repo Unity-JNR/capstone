@@ -3,10 +3,10 @@
       
 
 
-<div class="table-responsive">
+<div class="table-responsive" >
    <!-- Button trigger modal -->
 
-                   <table class="table table-bordered table-hover table-dark">
+                   <table class="table table-bordered table-hover table-dark" >
                        <thead>
                            <tr>
                                <th>prodName</th>
@@ -18,7 +18,7 @@
                            </tr>
                        </thead>
                        <tbody>
-                           <tr v-for="item in $store.state.carts" :key="item.id">
+                           <tr  v-for="item in $store.state.carts" :key="item.id">
                                <td>{{ item.prodName }}</td>
                                <td>{{ item.quantity }}</td>
                                <td>R{{ item.Amount }}</td>
@@ -29,7 +29,10 @@
                        </tbody>
                    </table>
                </div>
-      
+
+            
+ 
+                
 
  
 

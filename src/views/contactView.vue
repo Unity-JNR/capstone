@@ -3,24 +3,26 @@
 
 <div id="allContent">
   <div id="mainContent">
-    <h1 class="primaryHeading">Contact Us!</h1>
-    <div class="inputPair">
-      <label class="inputLabel" for="name">Name</label>
-      <input class="inputField" type="text" id="name">
-    </div>
-    <div class="inputPair">
-      <label class="inputLabel" for="email">Email</label>
-      <input class="inputField" type="email" id="email">
-    </div>
-    <div class="inputPair">
-      <label class="inputLabel" for="message">Message</label>
-      <textarea class="inputField" type="textbox" id="message" rows="5"></textarea>
-    </div>
-    <div id="buttonCtr">
-      <button type="reset">Reset</button>
-      <button type="submit">Send</button>
-    </div>
-    <div class="clear"></div>
+    <form id="contactForm" method="post" action="https://formspree.io/f/xkndvvyo" @submit.prevent="submitForm">
+      <h1 class="primaryHeading">Contact Us!</h1>
+      <div class="inputPair">
+        <label class="inputLabel" for="name">Name</label>
+        <input class="inputField" type="text" id="name" v-model="formData.name">
+      </div>
+      <div class="inputPair">
+        <label class="inputLabel" for="email">Email</label>
+        <input class="inputField" type="email" id="email" v-model="formData.email">
+      </div>
+      <div class="inputPair">
+        <label class="inputLabel" for="message">Message</label>
+        <textarea class="inputField" id="message" rows="5" v-model="formData.message"></textarea>
+      </div>
+      <div id="buttonCtr">
+        <button type="reset">Reset</button>
+        <button type="submit">Send</button>
+      </div>
+      <div class="clear"></div>
+    </form>
   </div>
   <div id="secondaryContacts">
     <div id="offline">
@@ -46,11 +48,38 @@
 </template>
 
 <script>
+import axios from 'axios';
 import navigation from '@/components/navigation.vue'
     export default {
         components : {
             navigation
-        }
+        },
+        data() {
+            return {
+              formData: {
+             name: '',
+             email: '',
+             message: ''
+      }
+            }
+        },
+        methods: {
+    async submitForm() {
+      try {
+        const response = await axios.post('https://formspree.io/f/xkndvvyo', this.formData);
+    console.log('Form submitted successfully:', response);
+    alert('Form submitted successfully!');
+    // Reset the form after successful submission
+    this.formData = {
+      name: '',
+      email: '',
+      message: ''
+    };
+      } catch (error) {
+        console.error('Error submitting form:', error);
+      }
+    }
+  }
         
     }
 </script>

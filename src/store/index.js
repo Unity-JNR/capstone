@@ -85,6 +85,7 @@ export default createStore({
     },
     async register({commit},user){
      let {data} = await axios.post(register,user)
+     alert(data.msg)
      console.log(data);
 
 
