@@ -144,5 +144,11 @@ const  getcart = async(order_id) => {
   return cart
 }
 
+const clearcart = async() => {
+    const [cart]  = await pool.query("TRUNCATE TABLE cart")
+    return cart
+}
 
-export  {addProduct,getproducts,getproduct,updateproduct,deleteproduct,getusers,addusers,getuser,updateuser,deleteuser,getcarts,addcart,deletecart,updatecart,getcart,insertcart,checkuser,getusername}
+
+
+export  {addProduct,getproducts,getproduct,updateproduct,deleteproduct,getusers,addusers,getuser,updateuser,deleteuser,getcarts,addcart,deletecart,updatecart,getcart,insertcart,checkuser,getusername,clearcart}
