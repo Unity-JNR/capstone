@@ -1,4 +1,4 @@
-import {getcarts,addcart,deletecart,updatecart,getcart,insertcart,clearcart} from "../models/database.js";
+import {getcarts,addcart,deletecart,updatecart,getcart,insertcart,deletecarts} from "../models/database.js";
 
 export default {
    getitems: async (req,res)=> {
@@ -25,8 +25,8 @@ export default {
     await updatecart(quantity,+req.params.id);
     res.send(await getcarts())
    },
-   clearcarts: async (req,res)=> {
-      await clearcart();
+   deleteall: async (req,res)=> {
+      await  deletecarts();
       res.send(await getcarts())
    }
 
