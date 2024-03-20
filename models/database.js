@@ -82,7 +82,7 @@ const checkuser = async(userName)=> {
 
 const getcarts = async(userID)=> {
     const [carts] = await pool.query(`
-    SELECT  distinct order_id, prodName,Amount,img,category, count(order_id) as quantity  FROM cart INNER JOIN Products ON cart.id = Products.id WHERE userID = ? group by prodName;
+    SELECT  distinct order_id, prodName,Amount,img,category, count(order_id) as quantity, SUM(Amount) AS totalAmount  FROM cart INNER JOIN Products ON cart.id = Products.id WHERE userID = ? group by prodName;
     `,[userID])
     return carts
 }
