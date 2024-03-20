@@ -51,7 +51,7 @@
         computed: {
      logOut() {
      this.$store.dispatch('logOut');
-      //  this.$router.push('/login');
+       this.$router.push('/');
      } 
    }  
     }

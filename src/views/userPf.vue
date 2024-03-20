@@ -57,7 +57,7 @@
            ></path>
          </svg>
        </div>
-       <button class="button">Contact Me</button>
+       <button class="button" @click="deleteUserAndLogOut(item.UserID)">Delete Account</button>
      </div>
      
    </div>
@@ -117,7 +117,22 @@ data() {
               userPass: this.userPass
             }
             this.$store.dispatch('updateUser',edit)  
-        }
+        },
+        deleteUserAndLogOut(userID) {
+        // Call deleteUser function
+        this.deleteUser(userID);
+
+        // Call logOut function
+        this.logOut();
+    },
+    deleteUser(userID) {
+        this.$store.dispatch('deleteUser', userID);
+    },
+    logOut() {
+        this.$store.dispatch('logOut');
+        this.$router.push('/');
+    }
+
     },
   computed: {
     getoneuser(){
