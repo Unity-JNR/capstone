@@ -10,7 +10,7 @@ body {
 }
 
 h1 {
-    color: #0056b3; /* Slightly darker blue for better readability */
+    color: #090909; /* Slightly darker blue for better readability */
     margin-bottom: 3rem;
     text-align: center; /* Center the heading */
     font-size: 2.5rem; /* Larger heading */
@@ -24,7 +24,7 @@ table {
 }
 
 th {
-    background-color: #0069d9; /* Slightly darker blue for contrast */
+    background-color: #5c5e60; /* Slightly darker blue for contrast */
     color: #ffffff;
 }
 
