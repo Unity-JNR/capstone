@@ -23,7 +23,7 @@
                         <input type="name" placeholder="Name" class="flip-card__input" v-model="userName">
                         <input type="email" placeholder="Email" name="email" class="flip-card__input" v-model="userMail">
                         <input type="password" placeholder="Password" name="password" class="flip-card__input" v-model="userPass">
-                        <input type="text" placeholder="userRole" name="userRole" class="flip-card__input" v-model="userRole">
+                        <!-- <input type="text" placeholder="userRole" name="userRole" class="flip-card__input" v-model="userRole"> -->
                         <button class="flip-card__btn" @click="register()">Confirm!</button>
                      </form>
                   </div>
@@ -47,7 +47,7 @@ export default {
             userName: "",
             userPass:"",
             userMail:"",
-            userRole:""
+            userRole: 'user'
         }
     },
     methods: {

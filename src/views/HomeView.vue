@@ -7,6 +7,8 @@
         <source src="https://i.imgur.com/xul0o2M.mp4" type="video/mp4">
       </video>
     </div>
+
+  
     <!-- Your other content goes here -->
     <h1>Vintage Vibes</h1>
     <button class="btnHome">

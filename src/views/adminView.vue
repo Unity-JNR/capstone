@@ -99,6 +99,7 @@
 import spinner from '@/components/spinner.vue';
 import navigation from '@/components/navigation.vue';
 import footers   from '@/components/footers.vue'
+import Swal from 'sweetalert2';
 export default {
     components:{
         spinner,
@@ -121,24 +122,73 @@ export default {
         },
         async addproducts(){
              this.$store.dispatch('addproducts',this.$data);
+
         },
         deleteproducts(id) {
+            Swal.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, delete it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire({
+      title: "Deleted!",
+      text: "Your file has been deleted.",
+      icon: "success"
+    });
+    this.$store.dispatch('deleteproducts', id)
+    setTimeout(() => {
+                        
+                        window.location.reload();
+                    }, 1500);
+  }
+});
  
-            this.$store.dispatch('deleteproducts', id)
+            // this.$store.dispatch('deleteproducts', id)
         },
-
         updateproduct(id){
-            let edit = {
-              id: id,
-              prodName: this.prodName,
-              quantity: this.quantity,
-              amount: this.amount,
-              description: this.description,
-              category: this.category,
-              img: this.img
-            }
-            this.$store.dispatch('updateproduct',edit)  
+    let edit = {
+        id: id,
+        prodName: this.prodName,
+        quantity: this.quantity,
+        amount: this.amount,
+        description: this.description,
+        category: this.category,
+        img: this.img
+    };
+
+    Swal.fire({
+        title: "Do you want to save the changes?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Save",
+        denyButtonText: `Don't save`
+    }).then((result) => {
+        if (result.isConfirmed) {
+            this.$store.dispatch('updateproduct', edit)
+                .then(() => {
+                    Swal.fire("Saved!", "", "success");
+                    setTimeout(() => {
+                        
+                        window.location.reload();
+                    }, 1500);
+                })
+                .catch((error) => {
+                    Swal.fire("Error!", error.message, "error");
+                });
+        } else if (result.isDenied) {
+            Swal.fire("Changes are not saved", "", "info");
+            setTimeout(() => {
+                        
+                        window.location.reload();
+                    }, 1500);
         }
+    }); 
+}
 
     },
     mounted(){
