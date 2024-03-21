@@ -64,6 +64,7 @@
                                                     <input id="input" type="text" placeholder="name" v-model="userName">
                                                     <input id="input" type="text" placeholder="mail" v-model="userMail">
                                                     <input id="input" type="text" placeholder="userRole" v-model="userRole">
+                                                    <input id="input" type="text" placeholder="userPass" v-model="userPass">
                                                     
                                                 </div>
                                                 <div class="modal-footer">
