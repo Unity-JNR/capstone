@@ -6,7 +6,7 @@ import cartRoute from './routes/cart.js';
 import signupRoute from './routes/sign_up.js';
 import loginRoute from './routes/login.js';
 import {auth,authenticate} from './middleware/authentication.js';
-// import { errorHandling } from './middleware/errorHandling.js';
+import { errorHandling } from './middleware/errorHandling.js';
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 
@@ -20,10 +20,10 @@ app.use(cors({
 }))
 app.use(express.json());
 app.use(express.static('static'))
-// app.use(errorHandling())
+app.use(errorHandling())
 
 app.use(cookieParser());
-// app.use(authenticate)
+
 app.use('/products', productRoute); 
 app.use('/users', userRoute);
 app.use('/cart',authenticate, cartRoute);
