@@ -1,6 +1,7 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
 import router from '@/router'
+import Swal from 'sweetalert2'
 axios.defaults.withCredentials = true
 
 const loginn = 'https://capstone-umec.onrender.com/login'
@@ -68,13 +69,23 @@ export default createStore({
         $cookies.set('userID',UserID)
 
         console.log($cookies);
-        alert(data.msg)
+        Swal.fire({
+          title: "login?",
+          text: "You have successfully logged in?",
+          icon: "success",
+          timer:"1500"
+        });
       
         await router.push('/')
         // window.location.reload()
       } else 
       {
-        alert(data.msg)
+        Swal.fire({
+          title: "login?",
+          text: "incorrect password or username?",
+          icon: "error",
+          timer:"1500"
+        });
         $cookies.remove('jwt')
         $cookies.remove('user')
         $cookies.remove('userRole')
@@ -86,7 +97,12 @@ export default createStore({
     },
     async register({commit},user){
      let {data} = await axios.post(register,user)
-     alert(data.msg)
+     Swal.fire({
+      title: "sign Up?",
+      text: `${data.msg}`,
+      icon: "success",
+      timer:"1500"
+    });
      console.log(data);
 
 
@@ -158,6 +174,12 @@ export default createStore({
     async addtocart({commit},payload){
       let {data} = await axios.post(`${carts}/${payload.id}?user=${payload.userID}`)
       console.log(data);
+      Swal.fire({
+        title: "cart",
+        text: "added to cart",
+        icon: "success",
+        timer:"1000"
+      });
       // window.location.reload()
     },
      async getCart({commit},userID) {

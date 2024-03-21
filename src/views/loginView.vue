@@ -37,6 +37,7 @@
 <script>
 import navigation from '@/components/navigation.vue'
 import footers   from '@/components/footers.vue'
+
 export default {
   components: {
     navigation,
