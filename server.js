@@ -40,7 +40,7 @@ app.delete('/logout', (req, res) => {
   });
 });
 
-app.use(errorHandling())
+app.use(errorHandling)
 
 app.listen(PORT, () => {
   console.log(`Server running on port http://localhost:${PORT}`);
