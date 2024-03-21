@@ -1,7 +1,8 @@
 function errorHandling(err, req, res, next) {
-    if (err || res.statusCode >= 400) {
-        res.status(err.status || res.statusCode || 500).json({
-            statusCode: err.status || res.statusCode || 500,
+    if (err || (res && res.statusCode && res.statusCode >= 400)) {
+        const statusCode = err && err.status ? err.status : (res && res.statusCode) ? res.statusCode : 500;
+        res.status(statusCode).json({
+            statusCode: statusCode,
             msg: 'Apologies, there seems to be an error in the server. Please try again later.'
         });
     } else {
