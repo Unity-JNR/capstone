@@ -20,7 +20,6 @@ app.use(cors({
 }))
 app.use(express.json());
 app.use(express.static('static'))
-app.use(errorHandling())
 
 app.use(cookieParser());
 
@@ -35,12 +34,13 @@ app.use('/login',auth, loginRoute);
 app.delete('/logout', (req, res) => {
   // Clear the 'jwt' cookie
   res.clearCookie('jwt');
-
+  
   res.send({
     msg: 'You have been logged out'
   });
 });
 
+app.use(errorHandling())
 
 app.listen(PORT, () => {
   console.log(`Server running on port http://localhost:${PORT}`);
