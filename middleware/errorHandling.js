@@ -1,14 +1,11 @@
-function errorHandling(err, req, res, next ) {
-    if(err || res.statusCode >= 400) {
-        res.json({
-            statusCode: err.status || res.
-            statusCode || 500, 
-            msg: 'Apologies, there seems to be an error in the server. Please try again later.'
-        })
-    }else {
-        next()
+function errorHandling(err, req, res, next) {
+    if (err || res.statusCode >= 400) {
+      res.json({
+        status: err.statusCode || 500,
+        msg: "an error occured. pls try again later",
+      });
+    } else {
+      next();
     }
-}
-export {
-    errorHandling
-}
+  }
+  export { errorHandling };
