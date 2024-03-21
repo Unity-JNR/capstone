@@ -14,14 +14,17 @@
     </button>
    
   <!-- </div> -->
+  <footers class="fixed-bottom"/>
   
 </template>
 
 <script>
 import navigation from '@/components/navigation.vue'
+import footers   from '@/components/footers.vue'
 export default {
    components: {
      navigation,
+     footers
  
    }
 

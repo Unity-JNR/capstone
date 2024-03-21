@@ -1,4 +1,5 @@
 <template>
+    <navigation/>
       <div class="container">
     <div class="row">
         <div v-for="item in $store.state.product" :key="item.id" >
@@ -22,10 +23,16 @@
         </div>
     </div>
 </div>
+<footers/>
 </template>
 <script>
+  import navigation from '@/components/navigation.vue'
+  import footers   from '@/components/footers.vue'
 export default {
-    
+    components: {
+        navigation,
+        footers
+    },
     data() {
         return {
             

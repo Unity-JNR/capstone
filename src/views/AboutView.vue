@@ -43,13 +43,16 @@
     <img src="https://cdn-images.imagevenue.com/a9/b4/55/ME17RPDN_o.jpg" alt="" id="img" class=" img-fluid ">
 </div>
   </div>
+<footers/>
 </template>
 
 <script>
 import navigation from '@/components/navigation.vue'
+import footers   from '@/components/footers.vue'
 export default {
   components : {
-navigation 
+navigation ,
+footers
   }
 }
 </script>

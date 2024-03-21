@@ -45,14 +45,17 @@
 
   </div>
 </div>
+<footers class="fixed-bottom"/>
 </template>
 
 <script>
 import axios from 'axios';
 import navigation from '@/components/navigation.vue'
+import footers   from '@/components/footers.vue'
     export default {
         components : {
-            navigation
+            navigation,
+            footers
         },
         data() {
             return {

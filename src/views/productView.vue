@@ -68,6 +68,7 @@
  <spinner/>
 </div>
 
+  <footers/>
   
   </template>
 
@@ -75,13 +76,15 @@
 <script>
 import spinner from '@/components/spinner.vue';
 import navigation from '@/components/navigation.vue';
+import footers   from '@/components/footers.vue'
 
 
 export default {
 
     components: {
         spinner,
-        navigation
+        navigation,
+        footers
     },
     data(){
         return{
