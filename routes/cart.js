@@ -14,6 +14,8 @@ router.route('/:id')
          .patch(controller.updateitems)
          .delete(controller.deleteitems)
          .post(controller.additems)
+
+router.route('/delete/:id')
          .delete(controller.deleteall)
 
     export default router  
