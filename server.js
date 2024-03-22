@@ -15,7 +15,7 @@ config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(cors({
-  origin: 'http://localhost:8080',
+  origin: 'https://vintage-vibes-30d41.firebaseapp.com/',
   credentials: true
 }))
 app.use(express.json());
