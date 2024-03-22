@@ -1,7 +1,7 @@
 <template >
 <navigation/>
   <div class="c">
-    <div class="cards" v-for="item in $store.state.oneuser" :key="index">
+    <div class="cards" v-for="item in $store.state.oneuser" :key="item.UserID">
    <div class="profile-pic">
     <img src="https://i.ibb.co/SPrN7Q9/default-avatar.png" alt="default-avatar"  class="img-fluid pfp">
    </div>
@@ -69,7 +69,7 @@ data() {
             userName: "",
             userMail: "",
             userRole: "",
-            userPass:"",
+            userPass:""
         }
     },
     methods: {
@@ -78,7 +78,8 @@ data() {
               id: UserID,
               userName: this.userName,
               userMail: this.userMail,
-              userRole: this.userRole
+              userRole: this.userRole,
+              userPass:this.userPass
         
             }
             Swal.fire({
@@ -98,7 +99,7 @@ data() {
                     }, 1500);
                 })
                 .catch((error) => {
-                    Swal.fire("Error!", error.message, "error");
+                    Swal.fire("Error!", error.msg, "error");
                 });
         } else if (result.isDenied) {
             Swal.fire("Changes are not saved", "", "info");

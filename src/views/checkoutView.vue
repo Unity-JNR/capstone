@@ -21,7 +21,7 @@
                            <tr  v-for="item in $store.state.carts" :key="item.id">
                                <td>{{ item.prodName }}</td>
                                <td>{{ item.quantity }}</td>
-                               <td>R{{ item.Amount }}</td>
+                               <td>R{{ item.totalAmount }}</td>
                                <td>{{ item.category }}</td>
                                <td><img :src="item.img" alt="Product Image" id="image" class=" img-fluid"></td>
                                <td><button class="btnes" @click="deletefromcart(item.order_id)">decrease</button></td>
