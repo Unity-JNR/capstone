@@ -26,7 +26,7 @@ export default {
     res.send(await getcarts())
    },
    deleteall: async (req,res)=> {
-      await  deletecarts();
+      await  deletecarts(+req.params.id);
       res.send(await getcarts())
    }
 
