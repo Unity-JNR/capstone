@@ -206,6 +206,20 @@ export default createStore({
  
  
  
+     },
+     async buy({commit}) {
+      let {data} = await axios.delete(carts)
+      console.log(data);
+      Swal.fire({
+        title: 'Purchase',
+        text: `Thank you for your purchase`,
+        icon: "success",
+        timer:"1000"
+
+      
+      
+      })
+      // commit('set',data)
      }
 
   },

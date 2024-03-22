@@ -25,6 +25,7 @@
                                <td>{{ item.category }}</td>
                                <td><img :src="item.img" alt="Product Image" id="image" class=" img-fluid"></td>
                                <td><button class="btnes" @click="deletefromcart(item.order_id)">decrease</button></td>
+                               <button @click="buy()">buy</button>
                            </tr>
                        </tbody>
                    </table>
@@ -49,6 +50,9 @@ export default {
   methods: {
     deletefromcart(order_id) {
       this.$store.dispatch('deletefromcart', order_id)
+    },
+    buy(){
+      this.$store.dispatch('buy')
     }
   },
   computed: {
