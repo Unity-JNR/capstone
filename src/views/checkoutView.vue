@@ -52,7 +52,7 @@ export default {
       this.$store.dispatch('deletefromcart', order_id)
     },
     buy(){
-      this.$store.dispatch('buy', { userID: $cookies.get('userID') });
+      this.$store.dispatch('buy', $cookies.get('userID'));
       
 
     }
