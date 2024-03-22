@@ -33,7 +33,7 @@ const auth=async(req,res,next)=>{
             const {userName}=req.body
 
             const token=jwt.sign({userName:userName},process.env.SECRET_KEY,{expiresIn:'1h'})
-            res.cookie('jwt',token,{httpOnly:true,secure:true,sameSite:'none',maxAge:3600000})
+            res.cookie('jwt',token,thisUser,{httpOnly:true,secure:true,sameSite:'none',maxAge:3600000})
 
             res.send({
                 token:token,
