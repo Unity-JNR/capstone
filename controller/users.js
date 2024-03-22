@@ -33,7 +33,7 @@ edit : async (req,res)=> {
 
     userName ? userName : {userName} = user
     userMail? userMail : {userMail} = user
-    
+    userPass? userPass : {userPass} = user
     userRole? userRole : {userRole} = user
 
     if(userPass) {
