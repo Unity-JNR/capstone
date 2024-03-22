@@ -146,7 +146,7 @@ const  getcart = async(order_id) => {
 
 const deletecarts = async(userID) => {
     const [result] = await pool.query(
-        'DELETE FROM cart WHERE UserID = ?',
+        'delete from cart where UserID = ?;',
         [userID]
     );
 }

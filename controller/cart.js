@@ -26,8 +26,8 @@ export default {
     res.send(await getcarts())
    },
     deleteall:async (req, res) => {
-      const { user} = req.query
-      await deletecarts(user);
+      const { UserID} = req.body
+      await deletecarts(UserID);
       res.send(await getcarts());
     }
 
