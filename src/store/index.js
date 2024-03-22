@@ -212,7 +212,7 @@ export default createStore({
      },
      async buy({commit},UserID) {
       let {data} = await axios.delete(`${carts}/delete/${UserID}`)
-      commit('setCart', data)
+      // commit('setCart', data)
       console.log(data);
       Swal.fire({
         title: 'Purchase',
