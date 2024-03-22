@@ -144,10 +144,10 @@ const  getcart = async(order_id) => {
   return cart
 }
 
-const deletecarts = async(userID,order_id) => {
+const deletecarts = async(userID) => {
     const [result] = await pool.query(
-        'DELETE FROM cart WHERE UserID = ? and order_id = ?',
-        [userID, order_id]
+        'DELETE FROM cart WHERE UserID = ?',
+        [userID]
     );
 }
 
