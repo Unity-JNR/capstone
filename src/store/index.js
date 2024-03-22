@@ -170,7 +170,7 @@ export default createStore({
 
     },
     async updateUser({commit},update){
-      let {data} = await axios.patch(user_web+'/'+ update.id,update)
+      let {data} = await axios.patch(user_web+'/'+ update.UserID,update)
       console.log(data);
       window.location.reload()
     },
