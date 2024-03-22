@@ -26,8 +26,8 @@ export default {
     res.send(await getcarts())
    },
     deleteall:async (req, res) => {
-      const { userID } = req.cookies; // Assuming you're using cookies to store userID
-      await deletecarts(userID);
+      const { user} = req.query
+      await deletecarts(user);
       res.send(await getcarts());
     }
 
