@@ -25,9 +25,10 @@ export default {
     await updatecart(quantity,+req.params.id);
     res.send(await getcarts())
    },
-   deleteall: async (req,res)=> {
-      await  deletecarts(user);
-      res.send(await getcarts())
-   }
+    deleteall:async (req, res) => {
+      const { userID } = req.cookies; // Assuming you're using cookies to store userID
+      await deletecarts(userID);
+      res.send(await getcarts());
+    }
 
 } 
