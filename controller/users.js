@@ -38,7 +38,7 @@ edit : async (req,res)=> {
 
     if(userPass) {
         try{
-            userPass = await bycrpt.hash(userPass,10)
+            userPass = await bcrpt.hash(userPass,10)
         } catch(e) {
             console.error("Invalid hashing password",e)
             res.status(500).send({e:"an error occurred"})
