@@ -26,8 +26,8 @@ export default {
     res.send(await getcarts())
    },
     deleteall:async (req, res) => {
-      const { UserID} = req.body
-      await deletecarts(+UserID);
+      const id = req.params.id
+      await deletecarts(+id);
       res.send(await getcarts());
     }
 
