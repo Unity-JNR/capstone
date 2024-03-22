@@ -26,24 +26,35 @@ getoneuser : async (req,res)=> {
 
 },
 edit : async (req,res)=> {  
-    let {userName,userMail,userPass,userRole} = req.body
+    let {userName,userMail,userRole,userPass} = req.body
 
 
     const [user] = await getuser(+req.params.id);
 
     userName ? userName : {userName} = user
     userMail? userMail : {userMail} = user
-    userPass? userPass : {userPass} = user
+    
     userRole? userRole : {userRole} = user
+
+    if(userPass) {
+        try{
+            userPass = await bycrpt.hash(userPass,10)
+        } catch(e) {
+            console.error("Invalid hashing password",e)
+            res.status(500).send({e:"an error occurred"})
+            return;
+        }
+    } else{
+        userPass = user.userPass
+    }
     
    
-    bcrpt.hash(userPass,10, async(err,hash)=> {
-        if(err) throw err;
-        await updateuser(userName,userMail,hash,userRole,+req.params.id)
+
+        await updateuser(userName,userMail,userRole,userPass+req.params.id)
         
     res.send(await getusers());
        
-    })
+  
 
     // await updateuser(userName,userMail,userPass,userRole,+req.params.id)
 
