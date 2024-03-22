@@ -61,10 +61,7 @@ export default {
     },
     buy(){
       console.log(typeof  +$cookies.get('userID') );
-      this.$store.dispatch('buy', +$cookies.get('userID'));
-  
-      
-
+      this.$store.dispatch('buy', $cookies.get('userID'));
     },
  
 

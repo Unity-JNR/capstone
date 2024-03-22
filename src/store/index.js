@@ -223,7 +223,7 @@ export default createStore({
       
       
       })
-      // commit('set',data)
+      commit('set',data)
       // window.location.reload()
      }
 
