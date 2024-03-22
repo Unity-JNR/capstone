@@ -52,6 +52,9 @@ export default createStore({
     },
     oneuser(state,value){
       state.oneuser = value
+    },
+    setCart(state,value){
+      state.carts = value
     }
     
   },
@@ -209,6 +212,7 @@ export default createStore({
      },
      async buy({commit},UserID) {
       let {data} = await axios.delete(carts + '/' + UserID)
+      commit('setCart', data)
       console.log(data);
       Swal.fire({
         title: 'Purchase',
