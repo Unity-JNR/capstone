@@ -220,7 +220,7 @@ export default createStore({
       
       })
       // commit('set',data)
-      window.location.reload()
+      // window.location.reload()
      }
 
   },
