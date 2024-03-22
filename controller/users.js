@@ -50,7 +50,7 @@ edit : async (req,res)=> {
     
    
 
-        await updateuser(userName,userMail,userRole,userPass,+req.params.id)
+        await updateuser(userName,userMail,userPass,userRole,+req.params.id)
         
     res.send(await getusers());
        

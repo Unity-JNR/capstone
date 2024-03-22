@@ -51,9 +51,9 @@ const addusers = async(userName,userMail,userPass,userRole) => {
     return user
 }
 
-const updateuser = async(userName,userMail,userRole,userPass,userID) => {
+const updateuser = async(userName,userMail,userPass,userRole,userID) => {
     const [user]  = await pool.query(`
-        UPDATE users SET userName =?, userMail =?, userRole =?, userPass =?  WHERE userID =?
+        UPDATE users SET userName =?, userMail =?, userPass =?, userRole =?  WHERE userID =?
     `, [userName,userMail,userRole,userPass,userID])
     return user 
 }
