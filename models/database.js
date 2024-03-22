@@ -149,6 +149,7 @@ const deletecarts = async(userID) => {
         'delete from cart where UserID = ?;',
         [userID]
     );
+    return result
 }
 
 
