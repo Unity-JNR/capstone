@@ -33,14 +33,20 @@ edit : async (req,res)=> {
 
     userName ? userName : {userName} = user
     userMail? userMail : {userMail} = user
-    userPass? userPass : {userPass} = user
+    // userPass? userPass : {userPass} = user
     userRole? userRole : {userRole} = user
 
-    bcrpt.hash(userPass,10,async(err,hash)=>{
-        if (err) throw err
-        await updateuser(userName,userMail,userRole,hash ,+req.params.id)
-        res.send(await getusers());
-    })
+    if (userPass) {
+        bcrpt.hash(userPass, 10, async (err, hash) => {
+            if (err) throw err;
+            await updateuser(userName,userMail,userRole,hash, +req.params.id);
+            res.send({ msg: "You have edited your account" });
+        });
+    } else {
+        // If password is not provided, update other fields without hashing the password
+        await updateuser(userName,userMail,userRole,userPass, +req.params.id);
+        res.send({ msg: "You have edited your account" });
+    }
     
     
    
