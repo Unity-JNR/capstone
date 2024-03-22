@@ -5,15 +5,15 @@ import controller from '../controller/cart.js'
 const router = express.Router()
 
 router.route('/')
- .delete(controller.deleteall)
 //     .post(controller.additems)
 
 
 router.route('/:id')
 //       .get(controller.getsingle)
-          .get(controller.getitems) 
-          .patch(controller.updateitems)
-          .delete(controller.deleteitems)
-          .post(controller.additems)
+         .get(controller.getitems) 
+         .patch(controller.updateitems)
+         .delete(controller.deleteitems)
+         .post(controller.additems)
+         .delete(controller.deleteall)
 
     export default router  
