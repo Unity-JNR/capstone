@@ -44,7 +44,7 @@ edit : async (req,res)=> {
         });
     } else {
         // If password is not provided, update other fields without hashing the password
-        await updateuser(userName,userMail,userRole,userPass, +req.params.id);
+        await updateuser(userName,userMail,userRole,user.userPass, +req.params.id);
         res.send({ msg: "You have edited your account" });
     }
     
