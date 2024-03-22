@@ -53,6 +53,7 @@ export default {
     },
     buy(){
       this.$store.dispatch('buy', { userID: $cookies.get('userID') });
+      
 
     }
   },
