@@ -29,8 +29,13 @@
                            </tr>
                        </tbody>
                    </table>
+
                    <div>
                      <button @click="buy($cookies.get('userID'))">buy</button>
+                   </div>
+
+                   <div>
+                     <p>R{{ totalAmount }}</p>
                    </div>
                </div>
 
@@ -57,13 +62,35 @@ export default {
     buy(){
       console.log(typeof  +$cookies.get('userID') );
       this.$store.dispatch('buy', +$cookies.get('userID'));
+  
       
 
-    }
+    },
+ 
+
   },
   computed: {
     getCart() {
       this.$store.dispatch('getCart', $cookies.get('userID'))
+    },
+    totalAmount() {
+      let carts = this.$store.state.carts;
+      let total = 0;
+      for (let i = 0; i < carts.length; i++) {
+        // Assuming totalAmount is a string, convert it to a number
+        let amount = parseFloat(carts[i].totalAmount);
+
+        // Alternatively, you can use the unary plus operator
+        // let amount = +carts[i].totalAmount;
+
+        // If totalAmount is NaN after conversion, set it to 0
+        if (isNaN(amount)) {
+          amount = 0;
+        }
+
+        total += amount;
+      }
+      return total;
     }
   },
   mounted() {
