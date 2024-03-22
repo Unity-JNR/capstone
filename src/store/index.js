@@ -207,7 +207,7 @@ export default createStore({
 
        window.location.reload();
  
- 
+ //comment
  
      },
      async buy({commit},UserID) {
