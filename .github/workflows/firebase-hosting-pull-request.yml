@@ -17,5 +17,5 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_VINTAGE_VIBES_30D41 }}'
-          projectId: vintage-vibes-30d41
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_VINTAGE_VIBES77 }}'
+          projectId: vintage-vibes77
