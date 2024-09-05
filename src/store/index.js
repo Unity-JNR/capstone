@@ -4,12 +4,12 @@ import router from '@/router'
 import Swal from 'sweetalert2'
 axios.defaults.withCredentials = true
 
-const loginn = 'https://capstone-umec.onrender.com/login'
-const web = 'https://capstone-umec.onrender.com/products'
-const user_web = 'https://capstone-umec.onrender.com/users'
-const register = 'https://capstone-umec.onrender.com/signup'
-const carts = 'https://capstone-umec.onrender.com/cart'
-const adduser = 'https://capstone-umec.onrender.com/signup'
+const loginn = 'https://capstone-iota-blond.vercel.app/login'
+const web = 'https://capstone-iota-blond.vercel.app/products'
+const user_web = 'https://capstone-iota-blond.vercel.app/users'
+const register = 'https://capstone-iota-blond.vercel.app/signup'
+const carts = 'https://capstone-iota-blond.vercel.app/cart'
+const adduser = 'https://capstone-iota-blond.vercel.app/signup'
 
 export default createStore({
   state: {
